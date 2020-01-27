@@ -1,0 +1,29 @@
+<html>
+	<head>
+		<script src="jquery-3.4.1.min.js"></script>
+		<script>
+		$(function() {
+			$('#btn').click(function() {
+			    $.ajax('localhost:8000/runsql/',
+			      {
+			        type: 'get',
+			        data: { sql: $('#sql').val() },
+			        dataType: 'json'
+			      })
+				.done(function(data) {
+					alert(data);
+				})
+				.fail(function(a,b,c,d,e) {
+					console.log(a);
+					console.log(b);
+
+				});
+			});
+		});
+		</script>
+	</head>
+	<input type="text" id = "sql" value="select * from abc" />
+	<input type="text" id ="key" />
+	<input type="text" id = "value" />
+	<input type="button" id="btn" value="submit" />
+</html>
