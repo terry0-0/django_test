@@ -14,8 +14,9 @@ def home(request):
         sql = "SELECT 'HELLO RUNSQL!!'"
     rslt = _run_sql_(sql)
     jsonOBJ = json.dumps(rslt)
-    
-    return JsonResponse(jsonOBJ, safe=False)
+    response = JsonResponse(jsonOBJ, safe=False)
+    response['Access-Control-Allow-Origin'] = 'http://localhost:8080'
+    return response
 
 def _run_sql_(sql):
     cursor = connection.cursor()
